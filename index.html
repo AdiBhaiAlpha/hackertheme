@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Theme</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            text-align: center;
+            animation: flicker 1.5s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .terminal {
+            background-color: black;
+            border: 1px solid lime;
+            padding: 20px;
+            margin: 50px auto;
+            width: 80%;
+            box-shadow: 0 0 20px lime;
+        }
+
+        .input-line {
+            display: inline;
+        }
+
+        .input-line:after {
+            content: '>';
+            color: lime;
+        }
+
+        .command {
+            color: white;
+        }
+
+        .error {
+            color: red;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: lime;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+            color: white;
+        }
+
+        /* Dropdown Menu Style */
+        .options {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .options button {
+            background-color: lime;
+            margin: 5px;
+        }
+
+        .options button:hover {
+            background-color: darkgreen;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <h1>Welcome to the Hacker Terminal</h1>
+        <div class="input-line">
+            <span class="command" id="commandOutput"></span>
+        </div>
+        <div id="options" class="options">
+            <button onclick="openLink('https://brandchitron.github.io/biograph/')">1. Biograph</button>
+            <button onclick="openLink('https://adibhaialpha.github.io/portfolio/')">2. Portfolio</button>
+            <button onclick="openLink('https://adibhaialpha.github.io/OiiTube/')">3. OiiTube</button>
+            <button onclick="openLink('https://brandchitron.github.io/Download-Oii-Shunoo/')">4. Oii Shunoo</button>
+        </div>
+        <button id="commandButton" onclick="showOptions()">Click to Enter Command</button>
+        <div id="output" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        const commandOutput = document.getElementById('commandOutput');
+        const outputDiv = document.getElementById('output');
+        const optionsDiv = document.getElementById('options');
+
+        function showOptions() {
+            commandOutput.textContent = 'Choose an option:';
+            optionsDiv.style.display = 'block';
+            outputDiv.innerHTML = ''; // Clear previous output
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank'); // Open the link in a new tab
+            commandOutput.textContent = `Opening: ${url}`;
+            optionsDiv.style.display = 'none'; // Hide options after selection
+        }
+    </script>
+</body>
+</html>
